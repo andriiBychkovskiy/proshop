@@ -1,0 +1,42 @@
+{
+  "name": "proshop",
+  "version": "1.0.0",
+  "description": "eCommerce application build with the MERN stack ",
+  "type": "module",
+  "license": "ISC",
+  "author": "",
+  "main": "backend/src/index.ts",
+  "scripts": {
+    "start": "node --loader ts-node/esm backend/src/index.ts",
+    "server": "node --loader ts-node/esm --watch backend/src/index.ts",
+    "start:prod": "node backend/dist/index.js",
+    "client": "npm run dev --prefix frontend",
+    "app": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node --loader ts-node/esm backend/src/seeder.ts",
+    "data:destroy": "node --loader ts-node/esm backend/src/seeder.ts -d",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "colors": "^1.4.0",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.18.0",
+    "mongoose": "^8.17.1",
+    "multer": "^2.0.2"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.9",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^2.0.0",
+    "@types/node": "^24.2.1",
+    "concurrently": "^9.2.0",
+    "dotenv": "^17.2.1",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
