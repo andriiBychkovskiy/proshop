@@ -73,11 +73,11 @@ const PlaceOrderScreen = () => {
             </ListGroup.Item>
             <ListGroup.Item>
               <h2>Order Items</h2>
-              {cartItems.length === 0 ? (
+              {cartItems?.length === 0 ? (
                 <Message>Your cart is empty</Message>
               ) : (
                 <ListGroup variant="flush">
-                  {cartItems.map((item) => (
+                  {cartItems?.map((item) => (
                     <ListGroup.Item key={item._id}>
                       <Row>
                         <Col md={2}>
@@ -149,7 +149,7 @@ const PlaceOrderScreen = () => {
                 <Button
                   type="button"
                   className="btn-block"
-                  disabled={cartItems.length === 0}
+                  disabled={cartItems?.length === 0}
                   onClick={createOrderHandler}
                 >
                   Place Order

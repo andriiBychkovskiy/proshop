@@ -22,7 +22,7 @@ const CartScreen = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const { cartItems, itemsPrice } = cart;
-  const count = cartItems.reduce((acc, item) => acc + item.qty, 0);
+  const count = cartItems?.reduce((acc, item) => acc + item.qty, 0);
 
   const addToCartHandler = (item: CartItemType, qty: number) => {
     const updatedItem: CartItemType = { ...item, qty };
@@ -38,7 +38,7 @@ const CartScreen = () => {
   return (
     <Row>
       <h1 style={{ marginBottom: "20px" }}>Shopping Cart</h1>
-      {cartItems.length === 0 ? (
+      {cartItems?.length === 0 ? (
         <Col md={12}>
           <Message>
             Your cart is empty <Link to="/">Go Back</Link>
@@ -48,7 +48,7 @@ const CartScreen = () => {
         <Row>
           <Col md={8}>
             <ListGroup variant="flush">
-              {cartItems.map((item: CartItemType) => (
+              {cartItems?.map((item: CartItemType) => (
                 <ListGroup.Item key={item._id}>
                   <Row>
                     <Col md={2}>
@@ -82,7 +82,7 @@ const CartScreen = () => {
                       <Button
                         type="button"
                         variant="light"
-                        onClick={() => deleteFromCardHandler(item._id)}
+                        onClick={() => deleteFromCardHandler(item?._id as string)}
                       >
                         <FaTrash />
                       </Button>

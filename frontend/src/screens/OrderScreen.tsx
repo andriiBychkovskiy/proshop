@@ -67,7 +67,7 @@ const OrderScreen = () => {
     }
   }, [errorPayPal, loadingPayPal, order, paypal, paypalDispatch]);
 
-  const onApprove = async (data: OnApproveData, actions: OnApproveActions) => {
+  const onApprove = async (_data: OnApproveData, actions: OnApproveActions) => {
     if (actions.order) {
       return actions.order.capture().then(async function (details) {
         try {
@@ -88,7 +88,7 @@ const OrderScreen = () => {
   };
 
   const createOrder = async (
-    data: CreateOrderData,
+    _data: CreateOrderData,
     actions: CreateOrderActions
   ) => {
     return actions.order

@@ -10,7 +10,7 @@ export const addDecimals = (num: number): number => {
 export const updateCart = (state: InitialCartStateType) => {
   //Calculate items price
   state.itemsPrice = addDecimals(
-    state.cartItems.reduce((acc: number, item: CartItemType) => {
+    (state.cartItems ?? []).reduce((acc: number, item: CartItemType) => {
       return acc + item.price * item.qty;
     }, 0)
   );

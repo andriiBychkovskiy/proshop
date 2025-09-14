@@ -29,21 +29,21 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
       const item = action.payload;
       //check if item already exist in the cart
-      const existItem = state.cartItems.find(
+      const existItem = state.cartItems?.find(
         (x: CartItemType) => item._id === x._id
       );
       if (existItem) {
-        state.cartItems = state.cartItems.map((x: any) =>
+        state.cartItems = state.cartItems?.map((x: any) =>
           x._id === existItem._id ? item : x
         );
       } else {
-        state.cartItems = [...state.cartItems, item];
+        state.cartItems = [...state.cartItems as CartItemType[], item];
       }
       updateCart(state);
     },
     deleteFromCart: (state, action) => {
       const id = action.payload;
-      state.cartItems = state.cartItems.filter((item) => item._id !== id);
+      state.cartItems = state.cartItems?.filter((item) => item._id !== id);
       updateCart(state);
     },
     saveShippingAddres: (state, action) => {
